@@ -34,7 +34,7 @@ $ git remote add origin https://github.com/kyhoon001/TIL.git(이건 github에서
 $ git remote -v => 이름 확인
 $ git remote rename origin(원래이름) change(바꿀 이름)
 $ git remote rm origin(삭제 대상)
-
+git remote ==>연결되어있는거 확인(EX-> origin이라고 뜸)
 
 
 
