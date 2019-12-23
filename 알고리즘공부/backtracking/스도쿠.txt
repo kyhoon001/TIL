@@ -1,0 +1,100 @@
+#include<iostream>
+#include<vector>
+using namespace std;
+
+
+vector<pair<int, int>> v; // 빈칸을 저장할 것임.
+int s[9][9];  // 이건 스도쿠
+int amount = 0;
+bool f = false;
+
+bool col(int r,int n) {  // row값하고 해당 숫자를 넣어준다.
+	for (int i = 0; i < 9; i++) {
+		if (n == s[i][r]) {
+			return true; // 있다는 뜻
+		}
+	}
+	return false; // 없다는 뜻
+
+}
+
+bool row(int c, int n) {
+	for (int i = 0; i < 9; i++) {
+		if (n == s[c][i]) {
+			return true;
+		}
+	}
+	return false;
+}
+
+bool box(int c, int r, int n) {
+	c -=(c%3);
+	r -=(r%3);
+
+	for (int i = 0; i < 3; i++) {
+		for (int j = 0; j < 3; j++) {
+
+			if (n == s[c+i][r+j]) {
+				return true;
+			}
+		}
+	}
+	return false;
+}
+
+
+void func(int cnt) {
+	if (cnt == amount) {
+		for (int i = 0; i < 9; i++) {
+			for (int j = 0; j < 9; j++) {
+				cout << s[i][j] << " ";
+			}
+			cout << endl;
+		}
+		f = true;
+		return;
+	}
+
+	int c = v[cnt].first;
+	int r = v[cnt].second;
+
+	for(int n = 1; n<=9; n++) {
+		if (col(r, n) == false && row(c, n) == false && box(c, r, n) == false) { //세개 다 안 겹치면
+			s[c][r] = n;
+			func(cnt + 1);
+			if (f == true)
+				return;
+			s[c][r] = 0;
+		}
+
+
+
+	}
+
+
+}
+
+
+int main() {
+
+	//스도쿠 배열 입력하는 파트
+	for (int i = 0; i < 9; i++) {
+		for (int j = 0; j < 9; j++) {
+			cin >> s[i][j];
+			if (s[i][j] == 0) {
+				v.push_back(pair<int, int>(i, j));  // 빈칸 저장.
+				amount++;
+			}
+		}
+	}
+	//스도쿠 배열 끝나는 파트
+
+	func(0);
+
+	cin >> amount;
+
+	return 0;
+}
+
+
+뿌듯 ^^

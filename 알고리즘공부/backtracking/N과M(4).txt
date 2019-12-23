@@ -1,0 +1,42 @@
+#include<iostream>
+#include<vector>
+using namespace std;
+
+int n, m;
+int num[8];
+void func(int c, int n, int cnt) {
+
+	if (cnt == m) {
+		
+		for (int j = 0; j < m; j++) {
+			cout << num[j] << " ";
+		}
+		cout << endl;
+		return;
+	}
+
+	for (int i = c; i <= n; i++) {
+
+		num[cnt] = i;
+		func(i, n, cnt + 1);
+	}
+}
+
+
+	
+
+
+
+
+int main() {
+	cin >> n >> m;
+
+
+	for (int i = 0; i < m; i++)
+		num[i] = 0;
+	
+	
+		func(1, n, 0);
+
+	return 0;
+}
