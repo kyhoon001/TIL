@@ -148,6 +148,73 @@
 
 - pip install jupyter notebook을 사용하여 jupyter notebook을 설치하였음
 - 이후  jupyter notebook --no-browser를 입력하여 실행 가능
+  1. activate.bat 을 실행하여 가상환경으로 들어간다.
+  2. jupyter를 설치한 다음, 워크스페이스로 사용할폴더를 만들어준다.
+  3. 만든 폴더로 이동하여 jupyter notebook을 사용한다.
+
+
+
+## 3일차
+
+``sys.stdin, sys.stdout``
+
+	1. sys.stdin import
+ 	2. stdin.read*()
+     - stdin.readline() -> 문장을 입력받음?
+     - stdin.readlines() -> 엔터를 입력해도 계속 입력을 받음.
+
+- 입력을 받은 뒤 해당 파일의 글자 개수를 출력하는 코드
+
+```python
+from sys import stdin
+
+result = []
+for line in stdin.readlines():
+    word_list = list(line)
+    for _ in range(len(word_list)):
+        result.append(word_list.pop())
+        
+print("파일의 단어수 {}개".format(len(result)))
+```
+
+- 엔터를 입력해도 계속 입력을 받음. ctrl + d 를 눌러서 입력을 종료해야함. 파이참에서 실행.
+
+
+
+- 절대 경로로 설정을 해줄때는 다음과 같이 해줄 수 도 있다.
+
+  ```python
+  import sys
+  sys.path.append("C:/Users/multicampus/PycharmProjects/HelloProject")
+  ```
+
+  ```python
+  import temperatur ## 이렇게 import함.
+  ```
+
+- argv 확인하는 것.
+
+  ```python
+  import sys
+  print(sys.argv) # 를 통해서 확인할 수 있음. 리스트 형식으로 들어옴
+  #터미널에서 python hello.py ads gfdsg asd 이런 식으로 전달
+  ```
+
+
+
+- Pillow를 사용해 보았다.
+
+  ```python
+  from PIL import Image
+  from IPython.display import display
+  imgfile = 'asd.jpg'
+  
+  pil_im = Image.open(imgfile)
+  out = pil_im.transpose(Image.FLIP_TOP_BOTTOM)
+  display(out)
+  ```
+
+  - 해당 코드는 jupyter notebook에서 실행하였다. Pillow를 이용하여 사진을 컨트롤 하는 연습.
 
 
 
@@ -305,3 +372,78 @@ list.sort()
 print(list[-1])
 ```
 
+
+
+## 3일차
+
+1. 구구단 문제
+
+   ```python
+   # 1번 경우
+   c = 1
+   while c == 1 :
+       num1 = int(input())
+       num2 = int(input())
+       print(num1)
+       if 1 <= int(num1) <=9 :
+           c = 0
+       else :
+           print("INPUT ERROR!")
+   
+   
+   for i in range(1,10) :
+       print(str(num1) + " * " + str(i) + " = " + str(num1 * i))
+   
+   
+   for i in range(1,10) :
+       print(str(num2) + " * " + str(i) + " = " + str(num2 * i))
+   
+   #1번 끝
+   
+   
+   #2번 경우
+   
+   
+   while(1):
+       num = input()
+       num1 = num.split(" ")
+       if 1 <= int(num1[1]) <= 9 and 1 <= int(num1[0]) <= 9 :
+           break
+   
+   for i in range(1,10) :
+       for j in num1 :
+           result = int(i) * int(j)
+           print("%d * %d = %d" %(int(j), int(i), result), end='\t')
+       print(" ")
+   
+   #2번 경우 끝
+   ```
+
+2. 암호화 문제 - 딕셔너리 사용
+
+   ```python
+   key = list('abcdefghijklmnopqrstuvwxyz')
+   code = list(input())
+   
+   
+   z = zip(key, code)
+   result = {}
+   # for num in enumerate(z) :
+   i = 0
+   for i, num in enumerate(code) :
+   
+       result[key[i]] = num
+   result[' '] = ' '
+   answer = input()
+   for i, text in enumerate(answer) :
+       if 97 <= ord(text) <= 122 :
+           print(result[text],end='')
+       elif 65 <= ord(text) <= 90 :
+           print(chr(ord(result[chr(ord(text) + 32)]) - 32),end='')
+       elif text == ' ' :
+           print(result[text],end='')
+   
+   
+   ```
+
+   
