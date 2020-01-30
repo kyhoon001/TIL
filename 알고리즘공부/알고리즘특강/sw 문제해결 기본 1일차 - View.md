@@ -57,3 +57,30 @@ int main() {
 ```
 
 - 단순한 brute force로 해결
+
+```python
+for q in range(10):
+    n = int(input())
+    s = list(map(int, input().split()))
+    cnt = int(0)
+    for i in range(2,n-2):
+        leftmax = int(0)
+        rightmax = int(0)
+        if s[i -1] >= s[i-2]:
+            leftmax = s[i-1]
+        else:
+            leftmax = s[i-2]
+
+        if s[i +1] >= s[i+2]:
+            rightmax = s[i+1]
+        else:
+            rightmax = s[i+2]
+
+        if leftmax >= rightmax and leftmax < s[i]:
+            cnt += int(s[i]) - int(leftmax)
+        elif leftmax <= rightmax and rightmax < s[i]:
+            cnt += int(s[i]) - int(rightmax)
+    print("#%s %s"%(q+1, cnt))
+
+```
+
