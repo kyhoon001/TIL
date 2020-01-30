@@ -43,3 +43,25 @@ int main() {
 ```
 
 - brute force. 그리고 d 는 그냥 쓸모없는 값.
+
+
+```python
+
+c = int(input())
+for i in range(c):
+    t = input()
+    arr = input().split()
+    b = []
+    mini = 0
+    for j in range(101):
+        b.append(int(0))
+
+    for j in arr :
+         b[int(j)] += int(1)
+    for j in range(1,101):
+        if b[j] >= b[mini] :
+            mini = j
+    print("#%s %s"%(t, mini))
+
+```
+
