@@ -90,3 +90,40 @@ int main() {
 ```
 
 -  brute force
+
+```python
+for q in range(10):
+    n = int(input())
+    s = list(map(int, input().split()))
+    cnt = int(0)
+    a = []
+    sm = 101
+    big = 0
+    for i in range(101):
+        a.append(int(0))
+    for c in s:
+        a[c] +=1
+        if c < sm:
+            sm = c
+        elif c > big:
+            big = c
+
+    while n != 0:
+        if a[sm] == 0:
+            sm += 1
+        if a[big] == 0:
+            big -= 1
+        a[sm] -=1
+        a[sm+1] +=1
+        a[big] -=1
+        a[big-1] +=1
+        n-=1
+        
+    if a[sm] == 0:
+        sm += 1
+    if a[big] == 0:
+        big -= 1
+
+    print("#%s %s"%(q+1,big - sm))
+```
+

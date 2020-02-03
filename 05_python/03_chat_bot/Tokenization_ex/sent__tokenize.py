@@ -1,0 +1,5 @@
+import nltk
+from nltk.tokenize import sent_tokenize
+
+text = "Droxford railway station was a small station on the Meon Valley Railway, built to a design by T. P. Figgis and opened in 1903. It served the villages of Droxford, Soberton and Hambledon in Hampshire, England.[A] The railway served a relatively lightly populated area, but was built to main line specifications in anticipation of it becoming a major route to Gosport. Consequently, although the station was built in an area with only five houses, it was designed with the capacity to handle 10-carriage trains. It initially proved successful both for the transport of goods and passengers, but services were reduced during the First World War and the subsequent recession, and the route suffered owing to competition from road transport."
+print(sent_tokenize(text))
