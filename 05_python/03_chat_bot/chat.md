@@ -2,6 +2,13 @@
 
 1. 크롤링 관련 부분은 beautifulsoup 폴더에 있는 예제들 참조.
     - customerreports 에 예시 있음.
+    - 패키지
+    ```python
+    pip install lxml
+    pip install bs4
+    pip install requests
+    pip install fake_useragent
+    ```
 
 2. 데이터 분석 관련은 pandas_ex 폴더에 있는 문서들 참조. 
 
