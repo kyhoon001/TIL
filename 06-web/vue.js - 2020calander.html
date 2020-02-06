@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>Vue.js Sample</title>
+  <script src = "https://unpkg.com/vue"></script> <!- 스크립트 추가해주어야함- -->
+  <style>
+    button {
+      border: 1px solid #333333;
+      background-color: #E4E4E4;
+      font-size: 18pt;
+      font-weight:bold;
+      color:#444444;
+      width:100%; height:100%;
+    }
+    #month {
+      color: white;
+      font-size: 30pt;
+      text-align:center;
+      font-weight:bold;
+    }
+   
+  </style>
+  
+  
+</head>
+<body>
+  <div id="app" style='width:100%;height:100%'>
+    <table border="4" cellpadding="1" bordercolor="#FFFFFF"
+           bgcolor="#73B27B" cellspacing="2" width="100%" height="18%">
+      <tr><td id = month>{{message}}</td></tr>
+      
+    </table>
+    <table border="3" cellpadding="1" cellspacing="2" bordercolor="#FFFFFF" width="100%" height="82%" bgcolor="#73B27B">
+      <tr v-for="j in 3">
+        <td v-for="i in 4" align = "center">
+          
+          <button v-on:click=cal(i-1+(j-1)*4)>{{ buttons[i-1+(j-1)*4] }}</button>
+        </td>
+      </tr>
+    </table>
+  </div><br><br>
+  
+  
+  
+  
+  
+   <div id="calcc" style='width:100%;height:100%'>
+    <table  v-if="print==='5'" border="1" cellpadding="1" bordercolor="black"
+           bgcolor="white" cellspacing="2" width="100%" height="18%">
+      <tr style='text-align:center'>
+       <td style='color:red'>일</td> <td>월</td> <td>화</td><td>수</td><td>목</td><td>금</td><td style='color:blue'>토</td>
+      </tr>
+      
+        <tr v-for="j in 5">
+          <td v-for="i in 7" align = "center">
+            {{ days[i-1+(j-1)*7] }}
+            
+            </td>
+         
+        </tr>
+     
+    </table>
+     <table v-else-if="print=='6'" border="1" cellpadding="1" bordercolor="black"
+           bgcolor="white" cellspacing="2" width="100%" height="18%">
+      <tr style='text-align:center'>
+       <td style='color:red'>일</td> <td>월</td> <td>화</td><td>수</td><td>목</td><td>금</td><td style='color:blue'>토</td>
+      </tr>
+      
+        <tr v-for="j in 6">
+          <td v-for="i in 7" align = "center">
+            {{ days[i-1+(j-1)*7] }}
+            
+            </td>
+         
+        </tr>
+     
+    </table>
+  </div>
+  
+</body>
+  
+  <script>
+    // v-model이 id의 역할을 함.
+    // 이렇게 v로 시작되는 애들을 디렉티브라고 함.
+    var d = new Date();
+    var dd = ['1','2','3','4', '5','6','7',
+               '8','9','10','11', '12','13','14',
+               '15','16','17','18', '19','20','21',
+               '22','23','24','25', '26','27','28',
+               '29','30','31'
+                 ];
+    
+    new Vue({
+      el: '#app',
+      data : {
+        message: '',
+        buttons: ['9','10','11','12',
+                  '5','6','7','8',
+                  '1','2','3','4'
+                 ]
+      },
+      methods: {
+        cal: function(n) {
+           var array1 = a.days;
+           var array2 = [];
+          console.log(array2);
+          console.log(array2);
+              //default: 해도 같은 효과
+              this.message = "2020년 " +this.buttons[n] + "월";
+              d.setMonth(this.buttons[n]-1);
+              d.setDate(1);
+              console.log(d.getMonth());
+           for(var i = 0; i < d.getDay(); i++) {
+                array2.push(" ");
+              }
+          
+          
+          
+          console.log(array2);
+          array3 = array2.concat(dd);
+          console.log(array3);
+          console.log("gagag");
+          //////////////////
+          a.days = array3;
+          ///////////////
+          if(this.buttons[n]-1 == 3 || this.buttons[n]-1 == 5 ||this.buttons[n]-1 == 8 ||this.buttons[n]-1 == 10) { // 0이 1월임
+            var trash = a.days.pop();
+          }
+          else if(this.buttons[n]-1 == 1) {
+            var trash = a.days.pop();
+            trash = a.days.pop();
+          }
+          if(a.days.length > 35) {
+            a.print = '6';
+          }
+          else if(a.days.length <= 35) {
+            a.print = '5';
+          }
+          
+        }
+      }
+    });
+    
+    var a = new Vue({
+      el: '#calcc',
+      data : {
+
+      print: '',
+        days: []
+      }
+      
+    });
+    
+    
+  </script>
+</html>
