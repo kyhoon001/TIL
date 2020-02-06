@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>Vue.js Sample</title>
+  <script src = "https://unpkg.com/vue"></script> 
+   
+    </head>
+<body>
+ <div id = "app">
+    <ul>
+        <li v-for="(value, key, index) in object"> <!-- item in items나 item of items나 같다 -->
+            {{index}}, {{key}} : {{value}}
+            <!-- 키값하고 value값이 반대로 되어있음. for 부분이랑 밑에 매핑 부분이랑..-->
+        </li>
+
+    </ul>
+</div>
+</body>
+
+  
+  <script>
+  
+    var d =new Vue({
+      el: '#app',
+      data : {
+          object: {
+          title: 'How to do lists in Vue',
+          author: 'Jane Doe',
+          publishedAt: '2016-04-10'
+      }
+      }
+    });
+
+ 
+    
+  </script>
+</html> 

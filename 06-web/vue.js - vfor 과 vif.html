@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>Vue.js Sample</title>
+  <script src = "https://unpkg.com/vue"></script> 
+   
+    </head>
+<body>
+ <div id = "app">
+    <ul>
+        <li v-for="number in numbers" v-if="number %2 ==0">
+            {{number}}
+        </li>
+    </ul>
+</div>
+
+
+<div id = "app2">
+    <ul v-if="numbers.length">
+        <li v-for="number in numbers"> {{number}}</li>
+    </ul>
+    <ul>
+        <template v-if="numbers.length">
+            <li v-for="number in numbers">{{number}}</li>
+        </template>
+    </ul>
+
+    
+
+</div>
+
+</body>
+
+  
+  <script>
+  // 항상 주의해야 하는게 얘는 index가 0부터 오는게 아니라 1부터 옴.
+    new Vue({
+      el: '#app',
+      data : {
+          numbers: [1,2,3,4,5]
+      }
+    });
+
+    new Vue({
+      el: '#app2',
+      data : {
+          numbers: [1,2,3,4,5]
+      }
+    });
+
+ 
+    
+  </script>
+</html> 

@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>Vue.js Sample</title>
+  <script src = "https://unpkg.com/vue"></script> 
+   
+    </head>
+<body>
+ <div id = "todo-list-example">
+    <input v-model = "newTodoText"
+    v-on:keyup.enter="addNewTodo"
+    placeholder="Add a todo">
+
+    <ul>
+        <li is="Todo-Item"
+        v-for="(todo, index) in todos"
+        v-bind:key = "todo.id"
+        v-bind:title = "todo.title"
+        v-on:remove="todos.splice(index, 1)">
+        <!--li is = "TodoItem으로 적어줘도 됨.-->
+    </li>
+    </ul> 
+ </div>
+
+</body>
+
+  
+  <script>
+  // 항상 주의해야 하는게 얘는 index가 0부터 오는게 아니라 1부터 옴.
+    const TodoItem = {
+        template: `
+        <li> {{title}} <button @click="$emit('remove')">X</button>
+        </li>`,
+        props: ['title']    
+        };
+    new Vue({
+      el: '#todo-list-example',
+      data : {
+          newTodoText: '',
+          todos: [ 
+            {
+                id: 1,
+                title: 'Do the dishes'
+            },
+            {
+                id: 2,
+                title: 'Takeout the trash'
+            },
+            {
+                id: 3,
+                title: 'Mow the lawn'
+            },
+          ],
+          nextTodoid:4
+      },
+      methods: {
+          addNewTodo: function() {
+              this.todos.push({
+                  id: this.nextTodoid++,
+                  title: this.newTodoText
+              })
+              this.newTodoText=''
+          }
+      },
+      components: {
+          TodoItem
+          //위에는 Todo-Item이라고 되어있지만 매칭이 됨.
+          //알아서 표기법에 맞춰 변환하기 때문임.
+          //그냥 이름을 고유값을 줘서 맞추는게 더 쉬움.
+      }
+    });
+
+
+ 
+    
+  </script>
+</html> 

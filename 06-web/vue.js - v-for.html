@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>Vue.js Sample</title>
+  <script src = "https://unpkg.com/vue"></script> 
+   
+    </head>
+<body>
+ 
+    <ul id="v-for-object" class ="demo">
+        <li v-for="value in object"> <!-- item in items나 item of items나 같다 -->
+            {{value}}
+        </li>
+
+    </ul>
+    
+</body>
+
+  
+  <script>
+  
+    new Vue({
+      el: '#v-for-object',
+      data : {
+          object: {
+          title: 'How to do lists in Vue',
+          author: 'Jane Doe',
+          publishedAt: '2016-04-10'
+      }
+      }
+    });
+
+ 
+    
+  </script>
+</html> 

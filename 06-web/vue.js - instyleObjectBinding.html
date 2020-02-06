@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>Vue.js Sample</title>
+  <script src = "https://unpkg.com/vue"></script> 
+
+ 
+    </head>
+<body>
+ 
+  <div id = "app">
+      <div :style="styleObject">인라인 스타일 바인딩</div>
+  </div>
+</body>
+
+  
+  <script>
+
+
+    new Vue({
+      el: '#app',
+      data : {
+        styleObject: {color:'red',fontSize:'13px'}
+      }
+    })
+
+ 
+    
+    
+  </script>
+</html> 

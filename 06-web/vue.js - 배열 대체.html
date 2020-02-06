@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>Vue.js Sample</title>
+  <script src = "https://unpkg.com/vue"></script> 
+   
+    </head>
+<body>
+ <div id = "app">
+    <ul>
+        <li v-for="value in array">
+            {{value}}
+        </li>
+    </ul>
+    <button @click="filter">Filter</button>
+</div>
+</body>
+
+  
+  <script>
+  
+    var d =new Vue({
+      el: '#app',
+      data : {
+          array: [1,2,3,4]
+      },
+      methods: {
+          filter() {
+              this.array = this.array.filter(x =>x > 1);
+          }
+      }
+      
+    });
+
+ 
+    
+  </script>
+</html> 

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>Vue.js Sample</title>
+  <script src = "https://unpkg.com/vue"></script> 
+
+ 
+    </head>
+<body>
+ 
+  <div id = "app">
+    {{text}}
+    <test-component></test-component>
+    {{otherText}}
+    <button v-on:click="changeText">버튼!</button>
+
+  </div>
+</body>
+
+  
+  <script>
+
+
+    var d = new Vue({
+      el: '#app',
+      data : {
+        text: 'My Text',
+        componentText: 'Hi ??'
+      },
+      methods: {
+        changeText : function() {
+          this.text = 'My Changed Text'
+        }
+      },
+      computed: {
+        otherText: function() {
+          return this.text + ', yeah!!!'
+        }
+      },
+      components: {
+        'test-component': {
+          template: '<p><i>{{this.$parent.componentText}}</i></p>'
+        }
+      }
+    })
+
+ 
+    
+    
+  </script>
+</html> 
