@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>Vue.js Sample</title>
+  <script src = "https://unpkg.com/vue"></script> 
+
+ 
+    </head>
+<body>
+ 
+  <div id = "app">
+      <button-counter v-bind:num="number"></button-counter>
+  </div>
+</body>
+
+  
+  <script>
+  
+    Vue.component('button-counter', {
+        
+        props: ['num'],
+        template: '<button  v-on:click="num++"> You clicked me {{num}} times.</button>',
+        // 바인딩은 여기 템플릿에서 해주면 안 되고 위에서 해주어야함
+        // 여기서 함수를 이용해서 d 객체의 number값은 변경할 수 없음.
+        // 왜냐하면 props는 부모에서 자식으로 단방향 소통을 하기 때문임.
+    });
+
+
+    var d = new Vue({
+      el: '#app',
+      data : {
+          number : 1
+      }
+    })
+
+ 
+    
+    
+  </script>
+</html> 

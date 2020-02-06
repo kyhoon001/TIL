@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>Vue.js Sample</title>
+  <script src = "https://unpkg.com/vue"></script> 
+
+ 
+    </head>
+<body>
+ 
+  <div id = "app">
+      <input v-model="message">
+      <p>{{ printMessage}}</p>
+  </div>
+</body>
+
+  
+  <script>
+  
+    ///watch는 변화를 감지하면 작동하며
+    //해당 변화를 반영하여 줍니다.;
+    var data = {
+        message: "Hello Vue.js!",
+        printMessage: 'printMessage'
+    };
+    // Object.freeze로 얼리면 값이 바뀔 수 없음. 그래서 오류가 뜸.
+    Object.freeze(data)
+    // data.b = 'hi' 여기서는 아직 vue 객체가 생기지 않아서 추가 가능
+
+
+    new Vue({
+      el: '#app',
+      data : data,
+      watch: {
+          message : function(data) {
+              this.printMessage = data;
+              console.log("printMessage의 값이 바뀝니다 : ",this.printMessage);
+              console.log("data.b의 값이 바뀝니다.: ", this.b );
+          }
+      }
+    });
+
+    // data.b = "hi"; 여기서는 vue 객체가 생긴 이후라서 추가 불가능
+ 
+    
+  </script>
+</html> 
