@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+html
+    head
+        title= title
+        script(src="https://unpkg.com/vue") 
+        link(rel='stylesheet' href='/stylesheets/weather.css')
+    body
+        div#page-content.page-content.page-container
+            div.padding#wd
+                div.row.container.d-flex.justify-content-center
+                    div.col-lg-8.grid-margin.stretch-card
+                        div.card.card-weather
+                            div.card-body#bg
+                                div.weather-date-location
+                                    h1#main_day
+                                        |Friday
+                                    p.text-gray
+                                        span.weather-date#main_FullDay
+                                            |25 March, 2019
+                                            span.weather-location
+                                                |Seoul
+                                                |Korea
+                                div.weather-data.d-flex
+                                    div.mr-auto
+                                        h4.display-3#main_degree
+                                            |32
+                                            span.symbol
+                                                |°
+                                            |C
+                                        <p style="font-family: 'Poppins',sans-serif;color:black ;font-size:90%;text-shadow: 2px 2px 2px gray" id ="main_weather"> Cloudy </p>
+                            div.card-body.p-0
+                                div.d-flex.weakly-weather
+                                    <weather-item v-for="item in weatherlist" v-bind:weather = "item">
+
+                                    </weather-item>
+
+<script src = "https://unpkg.com/vue"></script> 
+script(src="/javascripts/weather.js")
