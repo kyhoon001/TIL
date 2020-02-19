@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>Vue.js Sample</title>
+  <script src = "https://unpkg.com/vue"></script> 
+   
+    </head>
+<body>
+ 
+    <div id = "app">
+        <div @click="doTop" style="background-color: blue; width: 200px; height:200px;">
+            <div @click="doMiddle" style="background-color: red; width: 100px; height: 100px;">
+                <button @click="doLast"> 제출</button>
+
+            </div>
+        </div>
+    </div>
+
+</body>
+
+  
+  <script>
+  // 항상 주의해야 하는게 얘는 index가 0부터 오는게 아니라 1부터 옴.
+   
+   const app = new Vue ({
+       el : "#app",
+       methods: {
+        doTop: function() {
+            console.log("첫번째 div");
+        },
+        doMiddle: function() {
+            console.log("두번째 div");
+        },
+        doLast: function() {
+            console.log("마지막 div");
+        }
+       }
+   })
+
+ 
+    
+  </script>
+</html> 

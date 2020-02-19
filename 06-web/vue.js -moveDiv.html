@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>Vue.js Sample</title>
+  <script src = "https://unpkg.com/vue"></script> 
+   
+    </head>
+<body>
+ 
+    <div id = "app">
+        <div v-bind:style="[baseStyles, overridingStyles]"><br/>
+            <div align='center'><button @click="moveDIV('up');">↑
+            </button></div>
+            <div align='center'><button @click="moveDIV('left');">←
+            </button></div>
+            <div align='center'><button @click="moveDIV('right');">→
+            </button></div>
+            <div align='center'><button @click="moveDIV('down');">↓
+            </button></div>
+
+
+        </div>
+    </div>
+
+</body>
+
+  
+  <script>
+  // 항상 주의해야 하는게 얘는 index가 0부터 오는게 아니라 1부터 옴.
+   
+   const app = new Vue ({
+       el : "#app",
+       data: {
+           marginTop:250,
+           marginLeft:150,
+           baseStyles: {
+               backgroundColor:'#fde6ff',
+               border: '2px solid #90C',
+               width: '110px',
+               height: '110px'
+           },
+           overridingStyles: {
+               position: 'absolute',
+               top: '250px',
+               left: '150px',
+               cursor: 'hand',
+               zindex: '10'
+           }
+       },
+       methods: {
+           
+        moveDIV : function(dir) {
+               if(dir =='up') {
+                   this.marginTop-= 15;
+               }else if(dir == 'left') {
+                   this.marginLeft-=15;
+               }else if(dir == 'down') {
+                   this.marginTop+=15;
+               }else if(dir == 'right') {
+                   this.marginLeft+=15;
+               }
+               this.overridingStyles.top = this.marginTop+'px';
+               this.overridingStyles.left = this.marginLeft+'px';
+           }
+       }
+   })
+
+ 
+    
+  </script>
+</html> 

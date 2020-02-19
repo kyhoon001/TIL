@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>Vue.js Sample</title>
+  <script src = "https://unpkg.com/vue"></script> 
+   
+    </head>
+<body>
+ 
+    <div id = "app">
+        <form @submit.prevent = "doPrevent" action="/doPrevent">
+            <input type="submit" value = "DefaultAction Cancel">
+        </form>
+           <div @click="doTop" style="background-color: blue; width: 200px; height:200px;">
+            <div @click="doMiddle" style="background-color: red; width: 100px; height: 100px;">
+                <button @click="doLast"> 제출</button>
+
+    </div>
+
+</body>
+
+  
+  <script>
+      
+   
+   const app = new Vue ({
+       el : "#app",
+       methods: {
+       
+        doPrevent: function() {
+            console.log("기본 동작 취소");
+        },
+        doTop: function() {
+            console.log("첫번째 div");
+        },
+        doMiddle: function() {
+            console.log("두번째 div");
+        },
+        doLast: function() {
+            console.log("마지막 div");
+        },
+
+       }
+   });
+
+ 
+    
+  </script>
+</html> 

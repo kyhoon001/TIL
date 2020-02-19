@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>Vue.js Sample</title>
+  <script src = "https://unpkg.com/vue"></script> 
+   
+    </head>
+<body>
+ 
+    <div id = "app">
+        <button v-on:click="warn('아직 서밋이 안 됩니다.', $event)">submit</button> <br>
+    </div>
+
+</body>
+
+  
+  <script>
+  // 항상 주의해야 하는게 얘는 index가 0부터 오는게 아니라 1부터 옴.
+   
+   const app = new Vue ({
+       el : "#app",
+       
+       methods: {
+           warn : function(message, event) {
+               if(event) event.preventDefault()
+               alert(message)
+           }
+       }
+   })
+
+ 
+    
+  </script>
+</html> 

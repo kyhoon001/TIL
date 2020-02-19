@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>Vue.js Sample</title>
+  <script src = "https://unpkg.com/vue"></script> 
+   
+    </head>
+<body>
+ 
+    <div id = "app">
+        <button v-on:click="cast">cast</button> <br>
+        <img :src="diceFace"></img>
+        
+    </div>
+
+
+</body>
+
+  
+  <script>
+  // 항상 주의해야 하는게 얘는 index가 0부터 오는게 아니라 1부터 옴.
+   
+   const app = new Vue ({
+       el : "#app",
+       data : {
+        num:0, // 가위 바위 보 순서.
+        dicefaces: ['https://lh3.googleusercontent.com/proxy/uT8svhfhd9B2q4hXsdTn-BlOi86nZu7XSlwrJl1H6GxsQ-GqkWevUMKTx8e4qFgY2c-2dbx2Vlh_1FDwDZGeF3aXiw5am6Ht7ZZQAE7roYojX0_R7WeKH1n67pJMTT66XLaPkt4wrQaekB8rhPpekyyP',
+                    'https://lh3.googleusercontent.com/proxy/j4bdzsvNz1H56FDkoAxibSUfn6y8Lfjup7xgfdXh5MNHziJ26zgpa60NiMt09giB87dKmJt-S1eVcmO9HjaEliKZ67z3QjTqNPFn0UlP5y-KP3VwDz9hLw5eOuwAW7bIdxoDt5S9GKKaPeH44RaBWe8A',
+                    'https://lh3.googleusercontent.com/proxy/7DR7RR_4nRvlvWXgbLbTuJIp0KFsFzZ7NlTvCWl_VgVb4jDppvObrGP2dbGx04uIEM6LKVoy4GHC_gMwnkaYxDKvW93Mx57CScPO5C40o5i025YBvCmQGS7V1ydyu1hx6efigdg_sVjPhJvrtNOAKx9n',
+                    ]
+       },
+       methods: {
+           cast : function() {
+               this.num = Math.floor(Math.random() * 3);
+           }
+       },
+       computed: {
+           diceFace : function() {
+               return this.dicefaces[this.num];
+           }
+       }
+   })
+
+ 
+    
+  </script>
+</html> 
