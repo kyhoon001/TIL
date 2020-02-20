@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>Vue.js Sample</title>
+  <script src = "https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script> 
+   
+    </head>
+<body>
+    <div id = "app">
+        <input type= "checkbox" value="기택" v-model="checkedNames">
+        <label>기택</label> 
+        <input type= "checkbox" value="기우" v-model="checkedNames">
+        <label>기우</label> 
+        <input type= "checkbox" value="기정" v-model="checkedNames">
+        <label>기정</label> <br>
+        <span>체크한 이름 : {{message}}</span>
+
+    </div>
+
+</body>
+
+  
+  <script>
+   var vm = new Vue ({
+       el : "#app",
+      data : {
+          checkedNames: [],
+          message:""
+      },
+      watch: {
+          checkedNames: function(newVal,oldVal) {
+              this.message = newVal.join(', ');
+          }
+      }
+   });
+
+    
+  </script>
+</html> 

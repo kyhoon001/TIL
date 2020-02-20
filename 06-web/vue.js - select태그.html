@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>Vue.js Sample</title>
+  <script src = "https://unpkg.com/vue"></script> 
+   
+    </head>
+<body>
+    <div id = "app">
+        <select v-model = "selected" multiple>
+            <option v-for="option in options" v-bind:value="option.value">
+                {{option.text}}
+            </option>
+        </select>
+
+        <span>{{selected}}</span>
+    </div>
+
+    <div id = "app2">
+        <select v-model = "selectedd">
+            <option v-bind:value="{ name:'기우' }">'기우'</option>
+            <option v-bind:value="{ name:'기정' }">'기정'</option>
+        </select> <br><br> {{message}}
+    </div>
+
+</body>
+
+  
+  <script>
+   var vm = new Vue ({
+       el : "#app",
+      data : {
+          selected: '기정',
+          options: [
+              {text: '기택', value:'기택'},
+              {text: '기우', value:'기우'},
+              {text: '기정', value:'기정'},
+          ]
+      }
+   });
+
+   var vm2 = new Vue ({
+       el : "#app2",
+      data : {
+          selectedd: '',
+          message:'123',
+      },
+      watch: {
+          selectedd: function(newVal,oldVal) {
+              console.log(typeof vm.selected);
+              this.message = vm.selectedd.name;
+          }
+      }
+   });
+  </script>
+</html> 

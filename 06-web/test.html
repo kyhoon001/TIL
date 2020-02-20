@@ -53,12 +53,9 @@
        <td style='color:red'>일</td> <td>월</td> <td>화</td><td>수</td><td>목</td><td>금</td><td style='color:blue'>토</td>
       </tr>
       
-
-      <tr v-for="j in 5">
-        <td v-for="i in 7" align = "center" >
-          
-            
-          <child-component2 v-bind:i="i" v-bind:j="j" v-bind:days='days' v-bind:condition='condition'></child-component2>
+        <tr v-for="j in 5">
+          <td v-for="i in 7" align = "center">
+            {{ days[i-1+(j-1)*7] }}
             
             </td>
          
@@ -73,8 +70,10 @@
       
         <tr v-for="j in 6">
           <td v-for="i in 7" align = "center">
-            
-          <child-component2 v-bind:i="i" v-bind:j="j" v-bind:days='days' v-bind:condition='condition'></child-component2>
+              <div>
+                  
+                {{ days[i-1+(j-1)*7] }}
+              </div>
             
             </td>
          
@@ -103,19 +102,10 @@
         buttons: ['9','10','11','12',
                   '5','6','7','8',
                   '1','2','3','4'
-                 ],
-        condition: ['https://3.bp.blogspot.com/-MmxJ6Uh54oI/WJvv5Bb78LI/AAAAAAAAAmU/Oil9g1JyNigPjckrftHQpxZIWOJihqNuwCLcB/s1600/fghjk.gif',
-                    'https://i.kinja-img.com/gawker-media/image/upload/s--r13rwI0Y--/c_scale,fl_progressive,q_80,w_800/glonsn6uektlti9fmpiz.gif',
-                    'https://giant.gfycat.com/TimelyWarmheartedAnole.gif',
-                    'https://www.adventurebikerider.com/wp-content/uploads/2017/10/tumblr_o27c7fByaO1tchrkco1_500.gif',
-                    'https://i.giphy.com/media/dAyD6PWoQRs40/giphy.gif',
-                    ],
-        num:0,
+                 ]
       },
-      
       methods: {
         cal: function(n) {
-          this.num = Math.floor(Math.random() * 5);
            var array1 = a.days;
            var array2 = [];
           console.log(array2);
@@ -134,10 +124,8 @@
           console.log(array2);
           array3 = array2.concat(dd);
           console.log(array3);
-          console.log("gagag");
           //////////////////
           a.days = array3;
-          a.condition = this.condition[this.num];
           ///////////////
           if(this.buttons[n]-1 == 3 || this.buttons[n]-1 == 5 ||this.buttons[n]-1 == 8 ||this.buttons[n]-1 == 10) { // 0이 1월임
             var trash = a.days.pop();
@@ -162,28 +150,24 @@
       data : {
 
       print: '',
-        days: [],
-        condition:"",
-        num:0,
+        days: []
       }
       
     });
-
-Vue.component('child-component2', {
- 
-  condition: function () {
-    return a.condition
-  },
-  template: `
-       <div>
-        <div>
-          <img src='{{ condition }}'>
-          </div>
-            {{ days[i-1+(j-1)*7] }}
-        </div>
-     `,
-     props: ['i','j','days','condition'],
-})
     
+    
+
+
+
+    Vue.component('weather-component', {
+        data:function() {
+            return {
+                count:0
+            }
+        },
+        template: '<button v-on:click="count++""> You clicked me {{count}} times.</button>'
+    });
+
+
   </script>
 </html>

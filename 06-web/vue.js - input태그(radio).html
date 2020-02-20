@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>Vue.js Sample</title>
+  <script src = "https://unpkg.com/vue"></script> 
+   
+    </head>
+<body>
+    <div id = "app" style = "height : 300px">
+        <div style = "float: left; margin : 60px">
+        <input type = "radio" id = "s" value="1" v-model="picked">
+        <label for="가위">가위</label> <br>
+        <input type = "radio" id = "r" value="2" v-model="picked">
+        <label for="바위">바위</label> <br>
+        <input type = "radio" id = "p" value="3" v-model="picked">
+        <label for="보">보</label> <br>
+        </div>
+        <div style = "float : left; height : 200px; width:200px;"> 
+            
+            <img :src="diceFace"></img> <br>
+            <button v-on:click="cast">Game</button> <br>
+            
+    <div style = "margin: 80px;" >
+        <img :src="Pic"/>
+    </div>
+        </div><br>
+        
+    </div>
+
+      
+
+</div>
+</body>
+
+  
+  <script>
+
+
+   const vm = new Vue ({
+       el : "#app",
+      data : {
+          picked:'',
+          num:0, // 가위 바위 보 순서.
+          score : 0,
+        dicefaces: ['https://imagescdn.gettyimagesbank.com/500/18/639/187/0/1057011902.jpg',
+                    'https://lh3.googleusercontent.com/proxy/uT8svhfhd9B2q4hXsdTn-BlOi86nZu7XSlwrJl1H6GxsQ-GqkWevUMKTx8e4qFgY2c-2dbx2Vlh_1FDwDZGeF3aXiw5am6Ht7ZZQAE7roYojX0_R7WeKH1n67pJMTT66XLaPkt4wrQaekB8rhPpekyyP',
+                    'https://lh3.googleusercontent.com/proxy/j4bdzsvNz1H56FDkoAxibSUfn6y8Lfjup7xgfdXh5MNHziJ26zgpa60NiMt09giB87dKmJt-S1eVcmO9HjaEliKZ67z3QjTqNPFn0UlP5y-KP3VwDz9hLw5eOuwAW7bIdxoDt5S9GKKaPeH44RaBWe8A',
+                    'https://lh3.googleusercontent.com/proxy/7DR7RR_4nRvlvWXgbLbTuJIp0KFsFzZ7NlTvCWl_VgVb4jDppvObrGP2dbGx04uIEM6LKVoy4GHC_gMwnkaYxDKvW93Mx57CScPO5C40o5i025YBvCmQGS7V1ydyu1hx6efigdg_sVjPhJvrtNOAKx9n',
+                    ],
+             pic: [ "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcROXChmPhITenpPvITP5YqbsU57mHcYSOdNDIipMoB5yVXZi01m",
+                 "https://img1.daumcdn.net/thumb/R720x0.q80/?scode=mtistory2&fname=http%3A%2F%2Fcfile25.uf.tistory.com%2Fimage%2F2712484255E46EF4130A55",
+                 "https://vignette.wikia.nocookie.net/animal-jam-meme-squad/images/2/28/Pepe_Dance.gif/revision/latest?cb=20160707013350",
+                 "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQgDq-oIsISF5feXki_JZ-JIwrUildXrK6-bQ3UOy0rl5JeD2tg"]
+       },
+      watch: {
+          message: function(newVal,oldVal) {
+            console.log(newVal);
+          }
+      },
+      methods: {
+           cast : function() {
+               var face = document.getElementById("picture");
+               this.num = Math.floor(Math.random() * 3)+1;
+               console.log(this.picked);
+               if(this.picked == 1) {
+                   if(this.num ==2)
+                        this.score = 1; // 짐
+                    else if(this.num ==1)
+                        this.score = 3; // 비김
+                    else if(this.num ==3)
+                        this.score = 2; // 이김
+               }
+               else if(this.picked == 2) {
+                   if(this.num ==3)
+                        this.score = 1;
+                    else if(this.num ==2)
+                        this.score = 3;
+                    else if(this.num ==1)
+                        this.score = 2;
+               }
+               else if(this.picked == 3) {
+                   if(this.num ==1)
+                        this.score = 1;
+                    else if(this.num ==3)
+                        this.score = 3;
+                    else if(this.num ==2)
+                        this.score = 2;
+               }
+
+           }
+       },
+       computed: {
+           diceFace : function() {
+              
+               return this.dicefaces[this.num];
+           },
+           Pic : function() {
+               return this.pic[this.score];
+           }
+       }
+   });
+
+    
+  </script>
+</html> 

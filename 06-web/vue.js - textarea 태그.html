@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>Vue.js Sample</title>
+  <script src = "https://unpkg.com/vue"></script> 
+   
+    </head>
+<body>
+    <div id = "app">
+        <span>Multi-line message : </span>
+        {{ message }} <br><br>
+        <textarea v-model="message" placeholder="여러 줄을 입력하세요"></textarea>
+    </div>
+
+</body>
+
+  
+  <script>
+   const vm = new Vue ({
+       el : "#app",
+      data : {
+          message:'World!'
+      },
+      watch: {
+          message: function(newVal,oldVal) {
+            console.log(newVal);
+          }
+      }
+   });
+
+    
+  </script>
+</html> 

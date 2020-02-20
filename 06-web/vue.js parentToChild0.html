@@ -1,0 +1,28 @@
+<html>
+<head></head>
+<body>
+    <script src = "https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script> 
+    <div id = "app">
+        <child-component what="parent to child2"></child-component>
+        <child-component what="parent to child2"></child-component>
+    </div>
+
+    <script>
+     
+    Vue.component('child-component', {
+        template: '<p>{{this.$parent.message}}</p>',
+        props: ['what']
+    })
+    
+    var b = new Vue({
+        el: '#app',
+        data: {
+            message: 'hello!'
+        }
+    })
+
+    </script>
+    </body>
+</html>
+
+  
