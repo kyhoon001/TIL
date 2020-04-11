@@ -7,11 +7,11 @@
 using namespace std;
 int n, m, n1, n2, n3, start, des;
 int maxn = 0;
-vector<vector<int>> v;
+vector<vector<int>> v; // resize를 이용해서 할당할거
 vector<vector<int>> price;
 int check[100001];
 
-bool bfs(int cnt) {
+bool bfs(int cnt) { // 재귀 말고 q로 해서 메모리 아낌.
 	queue<int> q;
 	q.push(start);
 	check[start] = 1;
