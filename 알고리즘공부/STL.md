@@ -23,5 +23,20 @@ count(v.begin(),v.end(), 기준);
         cout << "(" << (*it).first << "," << (*it).second << ")" << " ";
     cout << endl;
 ```
+## find
+```
+    string s = "dfsfdafacaasd"
+    s.find("caa"); // 시작 주소를 반환함.
+	cout << s.substr(s.find(c), c.length()) << endl; // 아렇게 하면 뽑을 수 있음.
 
+
+
+    숫자를 찾을 때는
+    
+	값 : cout <<  *find(v.begin(), v.end(), 20) << endl;
+    index : cout << find(v.begin(), v.end(), 20) - v.begin() << endl;
+
+    못 찾았을 떄 : if(find(v.begin(), v.end(), 60) == v.end()) 
+
+```
 ## 중복은 set로 하자.
