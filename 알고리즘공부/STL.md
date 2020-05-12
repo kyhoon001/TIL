@@ -11,6 +11,17 @@
 count(v.begin(),v.end(), 기준);
 ```
 
+## vector에서 중복값 제거 :
+```
+sort를 하고 해주어야함
+vector.erase(unique(s.begin(),s.end()),s.end())
+
+sort된 vector에서 unique(vector.begin(),vector.end()) ==>
+ 중복된 값들을 뒤로 보낸 뒤 중복된 숫자가 시작되는 주소를 반환함.
+ 따라서 erase를 사용해서 해당 값부터 끝까지 지워주면 중복이 삭제됨.
+```
+
+
 ## map으로 hash :
 ```
 
