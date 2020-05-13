@@ -20,7 +20,10 @@ sort된 vector에서 unique(vector.begin(),vector.end()) ==>
  중복된 값들을 뒤로 보낸 뒤 중복된 숫자가 시작되는 주소를 반환함.
  따라서 erase를 사용해서 해당 값부터 끝까지 지워주면 중복이 삭제됨.
 ```
-
+## vector 내림차순 정렬 :
+```
+sort(v.rbegin(),v.rend());
+```
 
 ## map으로 hash :
 ```
@@ -28,7 +31,7 @@ sort된 vector에서 unique(vector.begin(),vector.end()) ==>
 
     map<string,string> hash;
     hash["key"] = value 이런식으로 접근
-
+    map<strring,string>::iterator iter = hash.begin();
     모두 탐색 :
     for (it = map.begin(); it != map.end(); ++it)
         cout << "(" << (*it).first << "," << (*it).second << ")" << " ";
