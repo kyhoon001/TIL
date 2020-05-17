@@ -54,3 +54,34 @@ sort(v.rbegin(),v.rend());
 
 ```
 ## 중복은 set로 하자.
+
+
+
+## 반복문 인덱스를 이용한 값 처리를 할 수 없는 것 같음.
+```
+vector<int> v;
+v = {1, 2, 5, 2};
+for (auto i: v)
+    cout << i << ' ';
+cout << '\n';
+// prints "1 2 5 2"
+
+
+deque<vector<pair<int, int>>> d;
+d = {{{3, 4}, {5, 6}}, {{1, 2}, {3, 4}}};
+for (auto i: d) {
+    for (auto j: i)
+        cout << j.first << ' ' << j.second << '\n';
+    cout << "-\n";
+}
+
+
+
+값을 바꿔줘야할때는 다음과 같이 함.
+vector<int> v = {8, 2, 3, 1};
+for (auto &it: v)
+    it *= 2;
+for (auto it: v)
+    cout << it << ' ';
+// prints "16 4 6 2"
+```
