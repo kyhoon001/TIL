@@ -85,3 +85,20 @@ for (auto it: v)
     cout << it << ' ';
 // prints "16 4 6 2"
 ```
+
+## STL은 아니지만 최대공약수
+```
+
+ll gcd(ll a, ll b)
+{
+	ll tmp;
+	while (b != 0) {
+		tmp = a % b;
+		if (tmp == 0) return b;
+		else {
+			a = b;
+			b = tmp;
+		}
+	}
+}
+```
