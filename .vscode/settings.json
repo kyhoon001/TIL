@@ -1,5 +1,6 @@
 {
     "files.associations": {
         "stack": "cpp"
-    }
+    },
+    "python.pythonPath": "C:\\Python37\\python.exe"
 }
